@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+header {
+    background-color: #add8e6;
+    border-bottom:20px solid #d3d3d3;
+    height: 140px;
+    text-align: center;
+}
+
+#welcomeDiv {
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    height:50px;
+    background-color: #000000;
+}
+nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+nav a {
+    display: inline-block;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+nav a:hover {
+    color: #ffa500;
+}
+
+.intro {
+    width: 75%;
+    padding: 10px;
+}
+
+.packages {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.package {
+    flex: 100%;
+}
+.package-frame {
+    border: 1px solid #000000;
+    margin:5px;
+    padding:10px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.package-image {
+    background-color:#d3d3d3;
+    background-size: cover;
+    background-position: center;
+    height:350px;
+    margin-bottom: 18px;
+}
+.package-location {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.package-original-price, .package-new-price, .package-savings {
+    font-size: 14px;
+}
+.package-original-price {
+    color: #999999;
+}
+.package-new-price strong {
+    text-decoration: underline;
+}
+.package-savings {
+    color: green;
+}
+
+.package:hover .package-frame {
+    background-color: #000000;
+}
+.package:hover .package-location, .package:hover .package-new-price {
+    color: #ffffff;
+}
+
+footer {
+    color: #ffffff;
+    background-color: #000000;;
+    padding: 10px;
+}
+
+.customerInfoDiv {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#fname {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#lname {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+ }
+
+#email {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+ #phoneNum {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#adults {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#children {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#dateStart {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#dateEnd {
+    width: 25%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.newZealDiv {
+    display: none;
+ }
+  
+ .maldivesDiv {
+    display: none;
+ }
+  
+ .veniceDiv {
+    display: none;
+ }
+  
+ .cancunDiv {
+    display: none;
+ }
+
+ #returnInfoDiv {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+ }
+
+ #loginForm {
+    padding: 10px;
+ }
+
+ #loginForm div {
+    margin-bottom: 10px;
+ }
+
+ #errorMessage {
+    color: red;
+ }
+ 
+
+@media only screen and (min-width: 575px) {
+    header {
+        text-align: left;
+    }
+    nav {
+        background-color: #ffffff;
+    }
+    nav a {
+        color: #000000;
+    }
+    nav a:hover {
+        color: red;
+        transform: translateY(-8px);
+    }
+    .intro {
+        width: 540px;
+    }
+    .package {
+        flex: 50%;
+    }
+    .package-image {
+        height:250px;
+    }
+
+}
+
+@media only screen and (min-width: 900px) {
+    .intro {
+        width: 800px;
+    }
+    .package {
+        flex: 25%;
+    }
+    .package-image {
+        height:200px;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mega Travel</title>
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="reservation.js"></script>
+    </head>
+    <body>
+        <header>
+            <img src="mega travel logo.png" alt="logo" style = "height: 140px;">
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Agent</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class = "intro">
+                <h1>Contact an Agent</h1>
+                <p>We would love to know more about your travel plans. Please fill out this contact form to get in touch with a travel agent.</p>
+            </div>
+            <div name="contact-agent" class="contact-agent">
+                <form name="reservationForm" id="reservationForm" onsubmit="return validateForm();" action="confirm.php" method="post">
+                    <div id="customerInfoDiv" class="customerInfoDiv">
+                        <label for="fname">First name:</label><br>
+                        <input type="text" id="fname" name="fname"><br>
+                        <label for="lname">Last name:</label><br>
+                        <input type="text" id="lname" name="lname"><br>
+                        <label for="email">Email Address:</label><br>
+                        <input type="email" id="email" name="email"><br>
+                        <label for="phoneNum">Phone Number:</label><br>
+                        <input type="text" id="phoneNum" name="phoneNum"><br>
+                        <label for="adults">Number of adults traveling:</label><br>
+                        <input type="number" id="adults" name="adults" min="0"><br>
+                        <label for="children">Number of children traveling:</label><br>
+                        <input type="number" id="children" name="children" min="0"><br>
+                        <label for="dateStart">Enter a travel start date:</label><br>
+                        <input type="date" id="dateStart" name="dateStart"><br><br>
+                        <label for="dateEnd">Enter a return travel date:</label><br>
+                        <input type="date" id="dateEnd" name="dateEnd"><br>
+
+                        <select id="location" class="location" name="location" style="margin-top: 10px; font-size: medium;" onchange="showResults(this.options[this.selectedIndex].value)">
+                            <option hidden="" disabled="disabled" selected="selected" value="none">Select a Destination</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Maldives, South Asia">Maldives, South Asia</option>
+                            <option value="Venice, Italy">Venice, Italy</option>
+                            <option value="Cancun">Cancun</option>
+                        </select>
+                        <div id="newZealDiv" class="newZealDiv">
+                            <input type="checkbox" name="activity[]" value="City Tours">City Tours<br>
+                            <input type="checkbox" name="activity[]" value="Sports">Sports<br>
+                            <input type="checkbox" name="activity[]" value="Cycling">Cycling<br>
+                            <input type="checkbox" name="activity[]" value="Museums">Museums<br>
+                            <input type="checkbox" name="activity[]" value="Boating">Boating<br>
+                            <br>
+                        </div>
+                        <div id="maldivesDiv" class="maldivesDiv">
+                            <input type="checkbox" name="activity[]" value="Museums">Museums<br>
+                            <input type="checkbox" name="activity[]" value="Sailing">Sailing<br>
+                            <input type="checkbox" name="activity[]" value="Beach">Beach<br>
+                            <input type="checkbox" name="activity[]" value="Hiking">Hiking<br>
+                            <input type="checkbox" name="activity[]" value="Boating">Boating<br>
+                            <br>
+                        </div>
+                        <div id="veniceDiv" class="veniceDiv">
+                            <input type="checkbox" name="activity[]" value="Museums">Museums<br>
+                            <input type="checkbox" name="activity[]" value="Theatre">Theatre<br>
+                            <input type="checkbox" name="activity[]" value="Parks and Recreation">Parks and Recreation<br>
+                            <input type="checkbox" name="activity[]" value="City Tours">City Tours<br>
+                            <br>
+                        </div>
+                        <div id="cancunDiv" class="cancunDiv">
+                            <input type="checkbox" name="activity[]" value="Parks and Recreation">Parks and Recreation<br>
+                            <input type="checkbox" name="activity[]" value="Beaches">Beaches<br>
+                            <input type="checkbox" name="activity[]" value="Boating">Boating<br>
+                            <input type="checkbox" name="activity[]" value="Snorkeling">Snorkeling<br>
+                            <br>
+                        </div>
+                        <br>
+                        <input type="submit" value="Submit" style="margin-top: 10px;margin-left: 10px; margin-bottom: 20px;" />
+                        <input type="reset" value="Clear" style="margin-top: 10px; margin-left: 10px; margin-bottom: 20px;" />
+                    </div>  
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div style="margin-bottom: 20px;">Copyright Protected. All rights reserved.</div>
+            <div>
+                MEGA TRAVELS<br>
+                mega@travels.com
+            </div>
+        </footer>
+    </body>
+</html>
