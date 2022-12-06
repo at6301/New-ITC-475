@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+   <style>
+      #racerOneDiv {
+         position: absolute;
+         width: 200px;
+         height: 200px;
+         left: 350px;
+         top: 300px;
+      }
+      #racerTwoDiv {
+         position: absolute;
+         width: 200px;
+         height: 200px;
+         left: 350px;
+         top: 400px;
+      }
+      #light {
+         margin-top: 10px;
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+         width: 35px;
+      }
+      #chooseRacerDiv {
+         text-align: center;
+         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+   </style>
+   <script>
+        function runRace(){
+            // make sure we are ready to race
+            var light = document.getElementById("light");
+            if (light.src.includes("stop")) {
+               // make sure racers are selected
+               var racerOne = document.getElementById("racerOne").value;
+               var racerTwo = document.getElementById("racerTwo").value;
+               // set racer values for updating to database
+               document.getElementById("racerOneValue").value = racerOne;
+               document.getElementById("racerTwoValue").value = racerTwo;
+               if(racerOne != "" && racerTwo != "") {
+                  light.src = "Images/go.png";
+                  var interval = setInterval(function() {
+                     var racerOneDiv = document.getElementById("racerOneDiv");
+                     var racerTwoDiv = document.getElementById("racerTwoDiv");
+                     if(racerOneDiv.offsetLeft < 800 && racerTwoDiv.offsetLeft < 800) {
+                        racerOneDiv.style.left = racerOneDiv.offsetLeft + Math.floor(Math.random() * 50) + "px"; 
+                        racerTwoDiv.style.left = racerTwoDiv.offsetLeft + Math.floor(Math.random() * 50) + "px"; 
+                     }
+                     else {
+                        // the race is over, break interval and announce the winner
+                        clearInterval(interval);
+                        var winnerImage = document.getElementById("winnerImage");
+                        if (racerOneDiv.offsetLeft > racerTwoDiv.offsetLeft) {
+                           document.getElementById("winnerValue").value = racerOne;
+                           if(racerOne == "dog") {
+                              winnerImage.src = "Images/dog.png";
+                           }
+                           else {
+                              winnerImage.src = "Images/dragon.png";
+                           }
+                        }
+                        else if (racerOneDiv.offsetLeft < racerTwoDiv.offsetLeft) {
+                           document.getElementById("winnerValue").value = racerTwo;
+                           if(racerTwo == "hamster") {
+                              winnerImage.src = "Images/hamster.png";
+                           }
+                           else {
+                              winnerImage.src = "Images/pigeon.png";
+                           }
+                        }
+                        else {
+                           alert("The race ended in a tie!");
+                        }
+                     }
+                  },1000);
+               }
+               else {
+                  alert("Please select your racers");
+               }
+            } 
+        }
+        function setRacerOne(racerOne) {
+            var racerOneImage = document.getElementById("racerOneImage");
+            if(racerOne == "dog") {
+               racerOneImage.src = "Images/dog.png";
+            }
+            else if(racerOne=="dragon") {
+               racerOneImage.src = "Images/dragon.png";
+            }
+            else {
+               racerOneImage.src = "";
+            }
+        }
+        function setRacerTwo(racerTwo) {
+         var racerTwoImage = document.getElementById("racerTwoImage");
+            if(racerTwo == "hamster") {
+               racerTwoImage.src = "Images/hamster.png";
+            }
+            else if(racerTwo == "pigeon") {
+               racerTwoImage.src = "Images/pigeon.png";
+            }
+            else {
+               racerTwoImage.src = "";
+            }
+        }
+        function resetRace() {
+            document.getElementById("chooseRacerForm").submit();
+        }
+    </script>
+</head>
+<body>
+   <div id="chooseRacerDiv">
+         <h2>Choose your racers!</h2>
+         <form id="chooseRacerForm" action="recordRace.php" method="POST">
+            <input type="hidden" name="racerOneValue" id="racerOneValue">
+            <input type="hidden" name="racerTwoValue" id="racerTwoValue">
+            <input type="hidden" name="winnerValue" id="winnerValue">
+            <label for="racerOne">Racer One:</label>
+            <select id="racerOne" onchange="setRacerOne(this.value)">
+               <option value=""></option>
+               <option value="dog">Dog</option>
+               <option value="dragon">Dragon</option>
+            </select>
+            <label for="racerTwo" style="margin-left: 10px;">Racer Two:</label>
+            <select id="racerTwo" onchange="setRacerTwo(this.value)">
+               <option value=""></option>
+               <option value="hamster">Hamster</option>
+               <option value="pigeon">Pigeon</option>
+            </select>
+         </form>
+   </div>
+   <div id="racerOneDiv">
+        <img id="racerOneImage" src="">
+   </div>
+   <div id="racerTwoDiv">
+      <img id="racerTwoImage" src="">
+   </div>
+   <img id="light" src="Images/stop.png" onclick="runRace()">
+   <div id="winnerDiv" style="text-align: center;">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: 0px;">The winner is:</h3>
+      <img id="winnerImage" src="" onclick="resetRace()">
+      <br>
+      <a href="raceHistory.php" style="text-align:center; top: 500px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">View Race History</a>
+   </div>
+</body>
+</html>
